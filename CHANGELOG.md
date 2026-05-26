@@ -1,33 +1,40 @@
 # Changelog
 
+All notable changes to this project are documented here.
+
 ## [1.0.0] - 2026-05-26
 
-### Added
-- Initial production release
-- RAG chat endpoint
-- Semantic search with Oracle 26ai
-- LLM inference via Ollama
-- GKE auto-scaling
-- GitHub Actions CI/CD
-- Comprehensive documentation
-
 ### Features
-- HNSW vector indexing (768-dim)
-- Cosine similarity search
-- Source attribution
-- Health checks
-- Error handling
+- RAG chat endpoint with source attribution
+- Semantic search via Oracle 26ai HNSW indexing
+- LLM inference with Ollama (llama3.2)
+- Auto-scaling Kubernetes deployment (2-5 replicas)
+- Health checks and error handling
 
-### Deployment
+### Infrastructure
 - Docker containerization
-- Kubernetes configuration
+- GKE Kubernetes deployment
+- GitHub Actions CI/CD pipeline
 - Cloud Run ready
-- GCP free tier compatible
 
-## Future Releases
+### Documentation
+- Comprehensive README
+- Architecture diagrams
+- API reference
+- Deployment guide
+- Troubleshooting wiki
+
+## Future Roadmap
 
 ### [1.1.0] - Planned
-- Firebase authentication
-- Rate limiting
-- Caching layer
-- Performance optimization
+- [ ] Firebase authentication
+- [ ] Rate limiting
+- [ ] Response caching
+- [ ] Batch document upload
+- [ ] Performance benchmarks
+
+### [1.2.0] - Planned
+- [ ] Database query optimization
+- [ ] Multi-document RAG
+- [ ] Custom embedding models
+- [ ] Webhook support
