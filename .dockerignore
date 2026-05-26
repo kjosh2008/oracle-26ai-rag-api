@@ -1,14 +1,46 @@
+# Python
 __pycache__
 *.pyc
 *.pyo
+*.pyd
+.Python
+env/
+venv/
 .env
+.venv
+
+# Git
 .git
 .gitignore
-README.md
-docs/
-tests/
-.github/
-venv/
+.gitattributes
+
+# IDE
 .vscode
 .idea
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Documentation
+README.md
+docs/
 *.md
+
+# Testing
+tests/
+pytest.ini
+.pytest_cache
+.coverage
+htmlcov/
+
+# CI/CD
+.github/
+.gitlab-ci.yml
+
+# Other
+.dockerignore
+Dockerfile
+docker-compose.yml
+.env.example
+.editorconfig
