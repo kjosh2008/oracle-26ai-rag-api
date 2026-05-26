@@ -1,5 +1,6 @@
 __pycache__
 *.pyc
+*.pyo
 .env
 .git
 .gitignore
@@ -8,3 +9,5 @@ docs/
 tests/
 .github/
 venv/
+.vscode
+.idea
