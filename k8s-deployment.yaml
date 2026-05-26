@@ -1,0 +1,61 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: oracle-credentials
+type: Opaque
+stringData:
+  ORACLE_HOST: "34.19.157.215"
+  ORACLE_PORT: "1521"
+  ORACLE_SERVICE: "PDB26"
+  ORACLE_USER: "aiapp"
+  ORACLE_PASSWORD: "AiApp#2026!"
+  OLLAMA_BASE_URL: "http://localhost:11434"
+  OLLAMA_EMBED_MODEL: "nomic-embed-text"
+  OLLAMA_CHAT_MODEL: "llama3.2"
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: oracle-rag-api
+  labels:
+    app: oracle-rag-api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: oracle-rag-api
+  template:
+    metadata:
+      labels:
+        app: oracle-rag-api
+    spec:
+      containers:
+      - name: api
+        image: northamerica-northeast1-docker.pkg.dev/project-1caaf581-2331-41dd-8b0/ai-oracle-repo/oracle-rag-api:latest
+        ports:
+        - containerPort: 8080
+        envFrom:
+        - secretRef:
+            name: oracle-credentials
+        resources:
+          requests:
+            cpu: 100m
+            memory: 256Mi
+          limits:
+            cpu: 500m
+            memory: 512Mi
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: oracle-rag-api-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: oracle-rag-api
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8080
