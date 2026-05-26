@@ -1,13 +1,4 @@
 __pycache__
 *.pyc
-*.pyo
 .env
 .git
-.gitignore
-README.md
-docs/
-tests/
-.github/
-venv/
-.vscode
-.idea
