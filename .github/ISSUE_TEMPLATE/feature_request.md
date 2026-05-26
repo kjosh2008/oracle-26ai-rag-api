@@ -1,16 +1,21 @@
 ---
 name: Feature Request
-about: Suggest an idea
+about: Suggest a new feature
 title: "[FEATURE] "
 labels: enhancement
 
 ---
 
 ## Description
-What would you like to add?
+Clear description of the feature.
 
 ## Use Case
-Why is this useful?
+Why is this feature useful?
 
 ## Implementation Ideas
 How could this be implemented?
+
+## Example
+```python
+# Example usage here
+```
