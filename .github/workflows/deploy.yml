@@ -1,4 +1,4 @@
-name: Deploy to GKE
+name: Build and Deploy API
 
 on:
   push:
@@ -15,19 +15,11 @@ jobs:
         uses: google-github-actions/setup-gcloud@v1
         with:
           project_id: project-1caaf581-2331-41dd-8b0
-          service_account_key: ${{ secrets.GCP_SA_KEY }}
-          export_default_credentials: true
       
-      - name: Build and Push Docker
-        run: |
-          gcloud auth configure-docker northamerica-northeast1-docker.pkg.dev
-          gcloud builds submit \
-            --tag northamerica-northeast1-docker.pkg.dev/project-1caaf581-2331-41dd-8b0/ai-oracle-repo/oracle-rag-api:latest \
-            --project=project-1caaf581-2331-41dd-8b0
+      - name: Configure Docker
+        run: gcloud auth configure-docker northamerica-northeast1-docker.pkg.dev
       
-      - name: Deploy to GKE
+      - name: Build and Push
         run: |
-          gcloud container clusters get-credentials oracle-ai-cluster \
-            --zone northamerica-northeast1-a \
-            --project=project-1caaf581-2331-41dd-8b0
-          kubectl rollout restart deployment/oracle-rag-api
+          docker build -t northamerica-northeast1-docker.pkg.dev/project-1caaf581-2331-41dd-8b0/ai-oracle-repo/oracle-rag-api:${{ github.sha }} .
+          docker push northamerica-northeast1-docker.pkg.dev/project-1caaf581-2331-41dd-8b0/ai-oracle-repo/oracle-rag-api:${{ github.sha }}
