@@ -3,7 +3,6 @@ name: Feature Request
 about: Suggest a new feature
 title: "[FEATURE] "
 labels: enhancement
-
 ---
 
 ## Description
@@ -14,8 +13,3 @@ Why is this feature useful?
 
 ## Implementation Ideas
 How could this be implemented?
-
-## Example
-```python
-# Example usage here
-```
