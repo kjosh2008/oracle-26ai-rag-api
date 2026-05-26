@@ -1,18 +1,20 @@
-# Contributing
+# Contributing to Oracle 26ai RAG API
 
-## Development Setup
+## Setup
 
 ```bash
+git clone git@github.com:kjosh2008/oracle-26ai-rag-api.git
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-## Code Style
+## Development
 
-- Use black for formatting: `black app/`
-- Use flake8 for linting: `flake8 app/`
-- Type hints required: `mypy app/`
+- Code style: Follow PEP 8
+- Type hints required
+- Docstrings for all functions
+- Test before submitting PR
 
 ## Testing
 
@@ -20,9 +22,10 @@ pip install -r requirements.txt
 pytest tests/
 ```
 
-## Pull Request Process
+## Submit PR
 
-1. Create feature branch: `git checkout -b feature/my-feature`
-2. Make changes and test
-3. Push and create PR
-4. PR must pass CI/CD
+1. Fork repository
+2. Create feature branch
+3. Make changes
+4. Run tests
+5. Submit PR
