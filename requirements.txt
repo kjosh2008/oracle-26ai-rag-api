@@ -5,3 +5,4 @@ langchain-ollama==1.1.0
 oracledb==4.0.1
 python-dotenv==1.2.2
 ollama==0.6.2
+pytest==7.4.3
