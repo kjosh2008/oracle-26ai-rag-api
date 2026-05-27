@@ -33,8 +33,19 @@ cp .env.example .env
 python3 app/main.py
 # API available at http://localhost:8080
 ```
+## System Architecture
 
-### Endpoints
+```
+Frontend (Cloud Run)
+    ↓ HTTP/REST
+Backend API (GKE)
+    ↓
+┌─────────────────┐
+│  Ollama Server  │  (llama3.2, embeddings)
+├─────────────────┤
+│  Oracle 26ai    │  (vector database, RAG)
+└─────────────────┘
+```
 
 **POST /chat** — Ask a question
 ```bash
@@ -100,7 +111,7 @@ kubectl scale deployment oracle-rag-api --replicas=3
 
 ### Docker
 ```bash
-docker build -t oracle-rag-api .
+docker build -t oracle-rag-api.
 docker run -p 8080:8080 oracle-rag-api
 ```
 
@@ -137,6 +148,13 @@ Environment variables (see `.env.example`):
 - ✅ Auto-scaling enabled
 - ✅ Monitoring configured
 - ✅ CI/CD pipeline active
+
+## Related Projects
+
+- **[oracle-26ai-rag-api](https://github.com/kjosh2008/oracle-26ai-rag-api)** — RAG backend API
+- **[oracle-26ai-chat](https://github.com/kjosh2008/oracle-26ai-chat)** — Frontend web interface
+- **[oracle-26ai-ollama](https://github.com/kjosh2008/oracle-26ai-ollama)** — LLM inference server
+
 
 ## License
 
